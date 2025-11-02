@@ -1,0 +1,42 @@
+<div class="formulario-container">
+  <h2>Prototipo de Agenda Electronica Basica en Angular</h2>
+  
+  <form [formGroup]="eventoForm" (ngSubmit)="onSubmit()">
+    
+    <div class="form-group">
+      <label for="titulo">Título del Evento:</label>
+      <input id="titulo" type="text" formControlName="titulo" placeholder="Reunión con el cliente">
+      
+      <div *ngIf="f['titulo'].invalid && (f['titulo'].dirty || f['titulo'].touched)" class="alerta-error">
+        <div *ngIf="f['titulo'].errors?.['required']">El título es obligatorio.</div>
+        <div *ngIf="f['titulo'].errors?.['minlength']">El título debe tener al menos 5 caracteres.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fecha">Fecha:</label>
+      <input id="fecha" type="date" formControlName="fecha">
+    </div>
+
+    <div class="form-group">
+      <label for="hora">Hora:</label>
+      <input id="hora" type="time" formControlName="hora">
+    </div>
+
+    <div class="form-group">
+      <label for="categoria">Categoría:</label>
+      <select id="categoria" formControlName="categoria">
+        <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" formControlName="descripcion" rows="3"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="!eventoForm.valid">
+      Guardar Evento
+    </button>
+  </form>
+</div>

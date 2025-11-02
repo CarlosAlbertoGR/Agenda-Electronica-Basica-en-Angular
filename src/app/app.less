@@ -1,0 +1,29 @@
+
+@color-fondo-principal: #111;         // Negro Oscuro
+@color-texto-claro: #F0F0F0;         // Blanco/Plateado
+@color-acento-principal: #00FF7F;    // Verde Brillante (Lima/Neón)
+@color-acento-secundario: #FFD700;   // Dorado
+@color-fondo-tarjeta: #222;          // Gris oscuro para tarjetas
+@sombra-neon: 0 0 5px @color-acento-principal;
+@color-fondo-principal: #111;
+
+:host {
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background-color: @color-fondo-principal !important; 
+    color: @color-texto-claro;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}

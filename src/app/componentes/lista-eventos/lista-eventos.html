@@ -1,0 +1,16 @@
+<div class="lista-container">
+  <h2>Eventos Programados</h2>
+
+  <div class="eventos-grid">
+    
+    <app-evento-item 
+      *ngFor="let evento of (eventos$ | async)"
+      [evento]="evento">
+    </app-evento-item>
+    
+  </div> 
+  
+  <p *ngIf="(eventos$ | async)?.length === 0" class="mensaje-vacio">
+    No hay eventos programados. ¡Agrega uno!
+  </p>
+</div>

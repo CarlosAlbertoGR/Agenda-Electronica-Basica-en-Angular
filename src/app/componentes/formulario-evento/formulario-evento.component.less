@@ -1,0 +1,130 @@
+@color-fondo-principal: #111;
+@color-texto-claro: #F0F0F0;
+@color-acento-principal: #00FF7F; 
+@color-acento-secundario: #FFD700; 
+@color-fondo-tarjeta: #222;
+@sombra-neon: 0 0 5px @color-acento-principal;
+
+.lista-container {
+    background-color: @color-fondo-principal;
+    padding: 20px;
+    border-radius: 8px;
+    color: @color-texto-claro;
+    border: 1px solid @color-acento-secundario;
+
+    h2 {
+        color: @color-acento-principal;
+        margin-bottom: 20px;
+        text-shadow: @sombra-neon;
+    }
+    
+    .eventos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .evento-card {
+        background-color: @color-fondo-tarjeta;
+        padding: 15px;
+        border-radius: 6px;
+        border-left: 5px solid @color-acento-secundario; 
+        position: relative;
+        overflow: hidden;
+        z-index: 2;
+        
+        height: 120px; 
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        &.categoria-trabajo { border-left-color: #6A5ACD; }
+        &.categoria-personal { border-left-color: #F4A460; }
+        &.categoria-salud { border-left-color: #FF00FF; }
+        
+        &.completado {
+            opacity: 0.6;
+            border-left-color: @color-acento-principal;
+        }
+        
+        &.expandido {
+            height: auto;
+            
+            .detalles-completos {
+                opacity: 1;
+                max-height: 300px; 
+                padding-top: 10px;
+            }
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            z-index: 3;
+        }
+
+        .categoria {
+            background-color: @color-acento-principal;
+            color: @color-fondo-principal;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: @color-texto-claro;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        
+        .fecha-hora {
+            color: @color-acento-principal;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .extracto {
+             color: @color-texto-claro;
+             font-size: 0.85em;
+        }
+        
+        .tachado {
+            text-decoration: line-through;
+            color: @color-texto-claro;
+        }
+
+        .detalles-completos {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .card-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+
+            button, a {
+                background-color: @color-acento-secundario;
+                color: @color-fondo-principal;
+                padding: 5px 10px;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                text-decoration: none;
+                transition: background-color 0.2s;
+            }
+            
+            .btn-eliminar {
+                background-color: @color-acento-principal;
+            }
+        }
+    }
+}

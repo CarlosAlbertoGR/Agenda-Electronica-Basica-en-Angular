@@ -1,0 +1,11 @@
+<div class="edicion-container">
+  <h2>Editar Evento: {{ eventoParaEditar?.titulo }}</h2>
+
+  <app-formulario-evento 
+    *ngIf="eventoParaEditar"
+    [eventoInicial]="eventoParaEditar"
+    (eventoGuardado)="manejarActualizacion($event)">
+  </app-formulario-evento>
+  
+  <p *ngIf="!eventoParaEditar">Cargando datos del evento...</p>
+</div>

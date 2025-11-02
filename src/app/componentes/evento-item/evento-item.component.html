@@ -1,0 +1,41 @@
+<!-- 
+  Este es el HTML de UNA SOLA tarjeta de evento.
+  La lógica de (click) y (change) ahora llama a las funciones
+  dentro de EventoItemComponent (el archivo del Canvas).
+-->
+<div
+  class="evento-card {{ 'categoria-' + evento.categoria.toLowerCase() }}"
+  [ngClass]="{ 'completado': evento.completado }">
+  
+  <div class="card-header">
+    <span class="categoria">{{ evento.categoria }}</span>
+    <input 
+      type="checkbox" 
+      [checked]="evento.completado" 
+      (change)="marcarCompletado(evento)"
+      title="Marcar como completado">
+  </div>
+  
+  <h3 [class.tachado]="evento.completado">
+    {{ evento.titulo }}
+  </h3>
+  
+  <div class="resumen-evento">
+    <p class="fecha-hora">{{ evento.fecha }} a las {{ evento.hora }}</p>
+    <p class="extracto">
+      {{ evento.descripcion.substring(0, 50) }}
+      <span *ngIf="evento.descripcion.length > 50">... (más)</span>
+    </p>
+  </div>
+  
+  <div class="detalles-completos">
+    <p class="descripcion-completa">Descripción: {{ evento.descripcion }}</p>
+    
+    <div class="card-actions">
+      <a [routerLink]="['/editar', evento.id]" class="btn-editar">Editar</a>
+      <button class="btn-eliminar" (click)="eliminarEvento(evento.id)">Eliminar</button>
+    </div>
+  </div>
+  
+</div>
+
